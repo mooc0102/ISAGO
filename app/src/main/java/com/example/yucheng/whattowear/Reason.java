@@ -9,6 +9,8 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,15 @@ import java.util.Locale;
 
 public class Reason extends AppCompatActivity {
     double latitude = 0, longitude = 0;
+    String address; // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+    String road;
+    String city;
+    String state;
+    String country;
+
+    String postalCode;
+    String knownName;  // Only if available else return NULL
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +47,13 @@ public class Reason extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        /*final LocationListener locationListener = new LocationListener() {
+        final LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
+
                 longitude = location.getLongitude();
                 latitude = location.getLatitude();
+                System.out.println(longitude);
+                System.out.println(latitude);
             }
 
             @Override
@@ -56,7 +70,7 @@ public class Reason extends AppCompatActivity {
             public void onProviderDisabled(String provider) {
 
             }
-        };*/
+        };
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (location!=null){
         longitude = location.getLongitude();
@@ -65,29 +79,56 @@ public class Reason extends AppCompatActivity {
 
 
 
-        //lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
 
 
+
+
+        final Handler mHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1:  //Upgrade Progress"
+                        TextView localtv = (TextView) findViewById(R.id.countryans);
+                        localtv.setText(country+"/"+ state+"/"+ city+"/"+ road );
+                        break;
+
+                }
+
+        }};
         final Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
 
-        if (latitude != 0 || longitude != 0) {
+                    try{
+                        while(true){
+                        if (latitude != 0 || longitude != 0) {
+                            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                            address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                            road = address.substring(address.indexOf("區") + 1, address.indexOf("路") + 1);
+                            city = addresses.get(0).getLocality();
+                            state = addresses.get(0).getAdminArea();
+                            country = addresses.get(0).getCountryName();
+                            postalCode = addresses.get(0).getPostalCode();
+                            knownName = addresses.get(0).getFeatureName();
 
-            try {
-                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                String road = address.substring(address.indexOf("區")+1,address.indexOf("路")+1);
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
+                            Message msg = new Message();
+                            msg.what = 1;
+                            mHandler.sendMessage(msg);
+                            break;
+                        }
+                            Thread.sleep(500);
+                        }
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
 
-                String postalCode = addresses.get(0).getPostalCode();
-                String knownName = addresses.get(0).getFeatureName();  // Only if available else return NULL
-                TextView localtv = (TextView) findViewById(R.id.countryans);
-                localtv.setText(country+"/"+ state+"/"+ city+"/"+ road );
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        }
+        }).start();
+
+
 
             Button b = (Button) this.findViewById(R.id.button);
 

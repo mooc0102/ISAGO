@@ -4,34 +4,29 @@
     api-level="22"
     density="xxhdpi"
     format="7"
-    timestamp="1461589404662318000" >
+    timestamp="1461597707658550000" >
 
     <task
         name="javac"
-        duration="175" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="33" />
+        duration="0" />
     <task
         name="verifier"
-        duration="5" />
+        duration="0" />
 
     <artifact
-        location="/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-        type="DEX" />
+        location="/Users/YuCheng/Documents/WhatToWear/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="1461588039333311000" >
+    <build timestamp="1461597707658550000" >
         <artifact
             location="/Users/YuCheng/Documents/WhatToWear/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="1461589404662318000" >
-        <artifact
-            location="/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>
