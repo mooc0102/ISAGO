@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="armeabi-v7a,armeabi"
-    api-level="22"
+    api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="1461597707658550000" >
+    timestamp="1462095168197495000" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="246" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="33" />
     <task
         name="verifier"
-        duration="0" />
+        duration="2" />
 
     <artifact
-        location="/Users/YuCheng/Documents/WhatToWear/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+        type="DEX" />
 
-    <build timestamp="1461597707658550000" >
+    <build timestamp="1462090610112134000" >
         <artifact
             location="/Users/YuCheng/Documents/WhatToWear/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="1462093858827906000" >
+        <artifact
+            location="/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build timestamp="1462095168197495000" >
+        <artifact
+            location="/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>
