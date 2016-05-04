@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +24,7 @@
         <activity android:name=".Reason" />
         <activity android:name=".Linkapp" />
         <activity android:name=".result" />
+        <activity android:name=".myCalendar"/>
         <activity android:name=".gps"></activity>
     </application>
 

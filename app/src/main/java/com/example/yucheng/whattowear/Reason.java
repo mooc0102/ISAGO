@@ -149,16 +149,26 @@ public class Reason extends AppCompatActivity implements LocationListener {
                 Intent intent = new Intent();
                 intent.setClass(Reason.this, gps.class);
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("histime",hislocationtime);
-                bundle.putStringArrayList("hisla",hislocationla);
-                bundle.putStringArrayList("hislo",hislocationlo);
+                bundle.putStringArrayList("histime", hislocationtime);
+                bundle.putStringArrayList("hisla", hislocationla);
+                bundle.putStringArrayList("hislo", hislocationlo);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
             }
 
         });
-
+        TextView tmp = (TextView) this.findViewById(R.id.textView1);
+        tmp.setClickable(true);
+        tmp.setFocusable(true);
+        tmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Reason.this, myCalendar.class);
+                startActivity(intent);
+            }
+        });
 
         Button r = (Button) this.findViewById(R.id.buttonr);
 

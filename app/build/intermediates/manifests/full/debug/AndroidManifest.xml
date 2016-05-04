@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +30,7 @@
         <activity android:name="com.example.yucheng.whattowear.Reason" />
         <activity android:name="com.example.yucheng.whattowear.Linkapp" />
         <activity android:name="com.example.yucheng.whattowear.result" />
+        <activity android:name="com.example.yucheng.whattowear.myCalendar" />
         <activity android:name="com.example.yucheng.whattowear.gps" />
     </application>
 
