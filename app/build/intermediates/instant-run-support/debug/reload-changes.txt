@@ -1,3 +1,0 @@
-CHANGED,/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/yucheng/whattowear/gps$override.class
-CHANGED,/Users/YuCheng/Documents/WhatToWear/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/yucheng/whattowear/Reason$7$override.class
